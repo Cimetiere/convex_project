@@ -18,6 +18,13 @@ def main(args={}):
        'PctAsian', 'PctOtherRace', 'PctMarriedHouseholds', 'BirthRate']]
     X.fillna(X.mean())
 
+    # for col in X:
+    #     X[col+"_noise"] = X[col] + np.random.normal(loc=0, scale=X[col]*1.5, size=X[col].shape)
+    #
+    # for i in range(2):
+    #     X['noise_{}'.format(i)] = np.random.normal(loc=np.random.randint(-5,5), scale=np.random.randint(2,5), size=X.shape[0])
+
+
 
     Y = df['TARGET_deathRate']
     X_train, X_test, y_train, y_test = train_test_split(X, Y, shuffle=True, train_size=0.8)
@@ -33,7 +40,7 @@ def main(args={}):
     X_test.insert(3, "bias", [1 for i in range(X_test.shape[0])])
 
 
-    values_lambda =[10000,1000,100, 10, 1,0.05, 0.1, 0.05, 0.01,0.005, 0.001,0.0005, 0.0001,0.00006, 0.00001]
+    values_lambda =[10000,1000, 10, 1, 0.1, 0.01, 0.001, 0.0001, 0.00001]
     values_tau = [1000,100, 10, 1,0.05, 0.1, 0.05, 0.01,0.005, 0.001, 0.0001, 0.00001]
 
 
